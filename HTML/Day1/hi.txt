@@ -1,0 +1,14 @@
+<!-- Introduction, Basic Structure  (DOCTYPE, html, head, body), Root Elements, Container Elements, Child Elements -->
+<!-- Tim bener . leee  -->
+
+
+<!-- what do you think a webpage is made of  -->
+<!-- commands and tags 
+html , css , js 
+we pass information in a webpage  -->
+======
+Texts , Links , Multimedia files and  Buttons  -->
+<!-- 
+A webpage - house 
+Content - doors , windows etc,,,,
+Blueprint - HTML  -->
