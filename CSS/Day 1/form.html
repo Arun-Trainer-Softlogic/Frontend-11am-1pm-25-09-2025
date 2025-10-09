@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration and Feedback Form</title>
+
+  
+ <link rel="stylesheet" href="./form.css">
+  </head>
+  <body>
+    <h1>User Registration and Feedback From</h1>
+
+    <form>
+      <fieldset>
+        <legend><strong>Personal information</strong></legend>
+
+        <label for="fullname">Full Name : </label>
+        <input
+          type="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Enter your full name "
+          required
+        />
+        <br /><br />
+        <label for="email">Email :</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@ex.com"
+          required
+        />
+        <br /><br />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter a secure password"
+          required
+          minlength="6"
+          maxlength="20"
+        />
+        <br /><br />
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required />
+        <br /><br />
+
+        <label>Gender</label>
+        <input type="radio" id="male" name="gender" value="Male" required />
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female" required />
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="Other" required />
+        <label for="other">Other</label>
+        <br /><br />
+        <label for="resume">Upload Resume :</label>
+        <input
+          type="file"
+          id="resume"
+          name="resume"
+          accept=".pdf,.docx"
+          required
+        />
+      </fieldset>
+
+      <fieldset>
+        <legend><strong>Preferences & Interests </strong></legend>
+
+        <!-- <label for="country">where are you from</label> -->
+
+        <label for="country">Select Your Country :</label>
+
+        <select name="country" id="country" required>
+          <option value="">--Select Your country --</option>
+          <option value="usa">United States</option>
+          <option value="canada">Canada</option>
+          <option value="uk">United Kingdom</option>
+          <option value="australia">Australia</option>
+          <option value="india">India</option>
+          <option value="other">Other</option>
+        </select>
+
+        <p>Choose Your insert</p>
+        <input type="checkbox" id="coding" name="interest" value="Coding" />
+        <label for="coding">Coding</label>
+        <input type="checkbox" id="music" name="interest" value="Music" />
+        <label for="music">Music</label>
+        <input type="checkbox" id="dance" name="interest" value="Dance" />
+        <label for="dance">Dance</label>
+        <input type="checkbox" id="sports" name="interest" value="Sports" />
+        <label for="sports">Sports</label>
+        <br /><br />
+
+        <label for="experience">Experience</label>
+        <input
+          type="range"
+          id="experience"
+          name="experience"
+          min="0"
+          max="10"
+          value="5"
+          oninput="experienceOutput.value = experience.value"
+        />
+        <output id="experienceOutput">5</output>
+
+        <br /><br />
+      </fieldset>
+
+      <fieldset>
+        <legend><strong>Comment or Suggestions</strong></legend>
+
+        <textarea
+          name="comments"
+          id="comments"
+          rows="5"
+          cols="50"
+          placeholder="Enter your comments or suggestions here..."
+        ></textarea>
+
+        <br /><br />
+
+        <label for="experience">Rate your Experience:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" />
+
+        <br /><br />
+
+        <input type="checkbox" id="newsletter" name="newsletter" checked />
+        <label for="newsletter">Subscribe to <a href="https://www.softlogicsys.in/" target="_blank"> our newsletter</a></label>
+        <br /><br />
+      </fieldset>
+
+      <fieldset>
+        <legend><strong>Form Actions</strong></legend>
+        <input type="reset" value="Reset Form" />
+        <input type="submit" value="Submit Form" />
+      </fieldset>
+    </form>
+  </body>
+</html>

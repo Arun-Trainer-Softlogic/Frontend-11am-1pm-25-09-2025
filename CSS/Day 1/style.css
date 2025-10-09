@@ -1,0 +1,43 @@
+
+
+.hh1 {
+  color: blue;
+}
+
+.hh1 {
+  color: pink;
+  background-color: yellow;
+}
+
+.black {
+  color: black;
+  text-align: CENTER;
+}
+
+h2,
+h3,
+h4,
+.hh1 {
+  border: 2px solid green;
+}
+
+
+.rea{
+    background-color: brown;
+    color: yellow;
+  }
+
+
+  #specialInput::placeholder{
+    color: rgb(0, 4, 255);
+  }
+
+
+
+
+
+
+
+
+
+
