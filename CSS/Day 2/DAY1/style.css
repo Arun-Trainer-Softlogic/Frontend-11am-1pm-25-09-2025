@@ -1,0 +1,46 @@
+*{
+    margin: 0%;
+    background-color: bisque;
+}
+
+
+h1{
+    color: red;
+
+}
+
+.a1 , .a2{
+    color: green;
+
+}
+.a1{
+    text-align: center;
+}
+
+.a2{
+    border: 1px solid blue;
+}
+
+.red{
+    color: red;
+}
+
+#ar{
+    background-color: red;
+}
+
+
+input[type="text"] {
+    background-color: aqua;
+}
+
+
+[class~="a1"]{
+    background-color: yellow;
+}
+
+
+
+
+
+

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f8f9fa;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      section {
+        background: white;
+        margin-bottom: 30px;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        color: #333;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+      }
+
+
+
+
+      /* hover */
+
+      button:hover{
+        background-color: #007bff;
+        color: white;
+        border: 3px solid green;
+      }
+
+input:focus {
+    border: 2px solid green;
+    outline: none;  
+}
+
+a:visited{
+    color: purple;
+}
+
+
+input:checked + label {
+    color: red;
+    border: 2px solid #ff0000;
+    accent-color: pink;
+} 
+input:checked{
+    accent-color: #ff0000;
+  
+
+}
+input[type="text"]:disabled{
+    background: #da0000;
+    color: #ffffff;
+    border: 2px solid #ccc;
+}
+
+
+ul li:first-child {
+    color: red;
+}
+
+ul li:last-child {
+    color:green;
+}
+
+
+ul li:nth-child(7){
+    color: palegreen;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <h1>CSS Pseudo-Classes & Pseudo-Elements Demo</h1>
+
+<!-- SECTION 1: Pseudo-Classes -->
+<section>
+  <h2>Pseudo-Classes Examples</h2>
+  
+  <button>Hover over me</button><br><br>
+  
+  <button>Hover over me</button><br><br>
+
+  <input type="text" placeholder="Click me to focus"><br><br>
+
+  <a href="#">Active Link</a> | <a href="#">Visited Link</a><br><br>
+
+  <input type="checkbox" id="check1">
+  <label for="check1">I am checked?</label><br><br>
+
+  <input type="text" placeholder="Enabled input">
+  <input type="text" placeholder="Disabled input" disabled><br><br>
+
+  <ul>
+    <li >First item</li>
+    <li>Second item</li>
+    <li>Last item</li>
+    <li >First item</li>
+    <li>Second item</li>
+    <li>Last item</li>
+    <li >First item</li>
+    <li>Second item</li>
+    <li>Last item</li>
+  </ul>
+
+  <p>This paragraph is normal.</p>
+  <p class="special">This paragraph is special (excluded by :not).</p>
+
+  <div></div> <!-- Empty div -->
+
+  <form>
+    <input type="text" placeholder="Required field" required>
+    <input type="email" placeholder="Optional email">
+  </form>
+
+  <a href="#target-demo">Go to Target Section</a>
+
+  <article>
+    <p>First paragraph in article.</p>
+    <p>Middle paragraph in article.</p>
+    <p>Last paragraph in article.</p>
+  </article>
+</section>
+
+<!-- SECTION 2: Target Example -->
+<section id="target-demo">
+  <h2>Target Section</h2>
+  <p>Clicking the "Go to Target Section" link highlights this area.</p>
+</section>
+
+<!-- SECTION 3: Pseudo-Elements -->
+<section>
+  <h2>Pseudo-Elements Examples</h2>
+
+  <p class="demo">This paragraph uses ::before and ::after.</p>
+  <p class="demo2">This paragraph uses ::first-letter and ::first-line.</p>
+
+  <p>Select some text to see the ::selection style.</p>
+
+  <ul>
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+  </ul>
+
+  <input type="text" placeholder="Styled placeholder"><br><br>
+  <input type="file">
+</section>
+
+  </body>
+</html>
