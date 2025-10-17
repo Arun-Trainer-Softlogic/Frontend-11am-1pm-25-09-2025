@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>templets</title>
+
+    <style>
+      .container {
+        display: grid;
+        grid-template-areas:
+          "header header header header"
+          "nav main aside rightbar"
+          "footer footer footer footer";
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+        gap: 10px;
+        
+      }
+
+      .Header {
+        height: 40px;
+        grid-area: header;
+        background-color: lightblue;
+      }
+      .Navigation {
+        height: 2000px;
+        grid-area: nav ;
+        background-color: rgb(15, 216, 216);
+      }
+      .main-content {
+        grid-area: main;
+        background: lightsalmon;
+      }
+      .aside {
+        grid-area: aside;
+        background-color: rgb(250, 166, 62);
+      }
+
+      .footer{
+          height: 40px;
+        grid-area: footer;
+        background: gray;
+      }
+      .rightbar{
+        grid-area: rightbar;
+        background-color: blue;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="Header">Header</div>
+      <div class="Navigation">Navigation</div>
+      <div class="main-content">main content</div>
+      <div class="rightbar">rightbar</div>
+      <div class="aside">aside</div>
+      <div class="footer">footer</div>
+    </div>
+  </body>
+</html>

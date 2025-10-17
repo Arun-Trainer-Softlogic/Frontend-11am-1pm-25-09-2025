@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>
+        Zindex .
+     </title>
+     <!-- <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+
+        }
+
+        .red{
+            background-color: red;
+            top: 50px;
+            left: 50px;
+            z-index: -1;
+        }
+        .blue{
+            background-color: blue;
+            top: 100px;
+            bottom: 100px;
+            z-index: 0;
+
+        }
+
+        .green{
+            background-color: green;
+            top: 150px;
+            bottom: 100px;
+            z-index: -2;
+        }
+     </style> -->
+
+     <style>
+
+.parent{
+    position: relative;
+    z-index: 3;
+
+}
+.child{
+    position: absolute;
+    z-index: 999;
+    background: yellow;
+    width: 100px;
+    height: 100px;
+}
+
+.overlay{
+    position: relative;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px;
+}
+     </style>
+    </head>
+<body>
+    
+<!-- elemnts with higher z index will appear on top 
+only works on positioned elements (relative , asoloute, fixed , stickey) -->
+
+
+
+<!-- 
+<div class="box red" ></div> 
+<div class="box blue"></div> 
+<div class="box yellow"></div> 
+<div class="box green"></div> 
+ -->
+
+
+ <div class="parent">
+    <div class="child">Child (Z= 999 inside parent)</div>
+ </div>
+ <div class="overlay">Overlay(z = 2 outside parent)</div>
+
+</body>
+</html>

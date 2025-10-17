@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex wrap</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f7bbbb;
+        margin: 20px;
+      }
+      .flex-container {
+        display: flex;
+        border: 2px solid #333;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: #f5f5f5;
+      }
+      .items {
+        background: #009dff;
+        color: white;
+        padding: 20px;
+        margin: 5px;
+        font-weight: 900;
+        font-size: 1.2em;
+        text-align: center;
+        border-radius: 10px;
+      }
+      .item1 {
+        flex-grow: 2;
+      }
+      .item2 {
+        flex-shrink: 5;
+      }
+
+      .flex-containers {
+        display: flex;
+        border: 2px solid #333;
+        padding: 20px;
+        margin-bottom: 30px;
+        background-color: #f5f5f5;
+        width: 500px;
+      }
+
+      .item {
+        background: #009dff;
+        color: white;
+        padding: 20px;
+        margin: 5px;
+        font-weight: 900;
+        font-size: 1.2em;
+        text-align: center;
+        border-radius: 10px;
+        flex-shrink: 1;
+          flex-basis: 150px;
+
+      }
+      .itemss {
+        background: #009dff;
+        color: white;
+      
+        margin: 5px;
+        font-weight: 900;
+        font-size: 1.2em;
+        text-align: center;
+        border-radius: 10px;
+        flex-shrink: 20;
+      
+      }
+    </style>
+  </head>
+  <body>
+    <div class="label">flex-wrap : no wrap (default)</div>
+    <div class="flex-container nowrap">
+      <div class="items item2">1</div>
+      <div class="items">2</div>
+      <div class="items">3</div>
+      <div class="items item1">4</div>
+      <div class="items">5</div>
+      <div class="items">6</div>
+      <div class="items item1">7</div>
+    </div>
+
+    <div class="flex-containers nowrap">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">5</div>
+      <div class="itemss">7</div>
+    </div>
+    <p>all item will stay on the single line</p>
+    <div></div>
+
+    
+  </body>
+</html>

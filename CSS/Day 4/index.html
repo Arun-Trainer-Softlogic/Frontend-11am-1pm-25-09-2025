@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4</title>
+    <link rel="stylesheet" href="./ar.css">
+
+    <style>
+     
+        /* div{
+            border: 2px solid blue ;
+            padding: 10px;
+            margin: 10px;
+            top: 100 px;   
+        }
+        .box2{
+            position: static;
+            top: 50px;
+            background-color: lightgreen;
+        } */
+
+
+        .box{
+            border: 2px solid blue ;
+         
+            top: 100 px;
+
+        }
+
+        .relative{
+            position: relative;
+            top: 20px;
+            left: 40px;
+            background-color: aquamarine;
+        }
+        .container {
+            position: relative;
+            border: 2px solid salmon;
+            height: 200px;
+        }
+        
+
+
+        .absolute{
+            position: relative;
+            top: 20px;
+            right: 20px;
+            background-color: pink;
+            padding: 10px;
+    
+        }
+        .fixed{
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            background-color: aqua;
+        }
+
+        header{
+            position: sticky;
+            top: 0;
+            background-color: lightgreen;
+            padding: 10px;
+            border: 3px solid black;
+
+        }
+
+        section{
+            height: 2000px;
+            background: linear-gradient(black, lightgreen);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Lorem ipsum dolor sit.</h1>
+
+
+<!-- 
+
+    static position 
+    relative , absolute , fixed 
+    sticky 
+    Z-index , stacking  -->
+
+
+
+<!-- 
+
+    <div>Box 1</div>
+    <div class="box2">Box 2</div>
+    <div>Box 3</div>
+ -->
+
+
+
+
+ <div class="box">Box 1 </div>
+ <div class="box relative">Box 2 (relative)</div>
+ <div class="box">Box 3</div>
+
+
+
+
+<div class="container">
+    <p>Container (Position : relative)</p>
+    <div class="absolute">Im am a absolute indie the container </div>
+</div>
+
+
+
+<div class="fixed"> i stay in one place at the bottom </div>
+
+
+
+
+
+<header>Stickey header - scroll tosee me stickiii!</header>
+
+
+
+
+
+
+<div class="container">
+    <div class="stickey-box"> Stickey inside the container </div>
+    <div class="content"></div>
+</div>
+<section></section>
+
+
+
+
+
+
+
+
+    </body>
+    </html>
