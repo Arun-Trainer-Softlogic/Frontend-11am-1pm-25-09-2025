@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Quires</title>
+
+    <style>
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(to right, #00d9d9, #00aaff);
+        color: #333;
+        transition: all 0.3 ease-in-out;
+      }
+
+
+      h1{
+        text-align: center;
+        font-size: 3vw; /* fluid text  */
+        
+      }
+
+
+      p{
+        width: 90%;
+        max-width: 800px;
+        background-color: #00d9d9;
+        margin: 30px auto;
+        line-height: 1.6;
+        font-size: 1.1rem;
+
+      }
+
+
+
+        .navbar {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background: navy;
+        padding: 1rem 5%;
+  
+      }
+
+        .navbar a {
+        color: aliceblue;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 0.2rem 1rem;
+        border-radius: 8px;
+        border: 1px solid yellow;
+        transition: background 0.3s ;
+
+      }
+
+
+
+
+
+      .navbar a:hover{
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        background: rgb(128, 128, 1);
+        padding: 20px 5%;
+        transition: all 0.3s ease;
+
+      }
+
+      .grid div{
+        background-color: coral;
+        color: white;
+        text-align: center;
+        padding: 30px 0;
+        border-radius: 10px;       
+        font-size: 1.5rem;
+        transition: transform 0.3s;
+      }
+
+      .grid div:hover{
+        transform: scale(1.10);
+      }
+
+    
+    
+
+
+      @media (max-width: 786px) {
+        .h1 {
+            font-size: 6vw;
+        }
+        .navbar{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    
+
+
+      @media (max-width: 480px) {
+        .grid{
+            grid-template-columns: 1fr;
+        }
+            .navbar{
+            flex-direction: column;
+            align-items: center;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Settings</a>
+    </nav>
+
+
+    <div>
+        Lorem, ipsum dolor.
+    </div>
+
+
+    <h1>responsive design</h1>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus fugiat
+      temporibus, eaque voluptatum in odio praesentium ducimus delectus quae
+      doloribus omnis laudantium hic sit officia. Aut fuga natus odio
+      blanditiis?
+    </p>
+
+    <div class="grid">
+      <div>px - fixed pixels with : 200px absolute , not responsive</div>
+      <div>em relative to the element font size - width : 30em; -- scales with parent text  </div>
+      <div>% - relative to parent  - width: 80% adjust with container </div>
+      <div>rem-  relative to root (html) font size</div>
+      <div>vh -   1% of viewport height: 100vh perfect for fullscreen sctions </div>
+      <div>vw -  1% of viewport width  -  width : 100vw great for respoisive</div>
+    </div>
+  </body>
+</html>
