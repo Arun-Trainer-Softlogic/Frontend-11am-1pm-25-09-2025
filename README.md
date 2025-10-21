@@ -91,22 +91,7 @@ You may rename or refactor the structure as the project grows.
 
 For HTML / CSS / JS folders, you can simply open `.html` files in your browser and view them. Use a live server extension or local HTTP server for better experience (e.g. `live-server` or VSCode Live Preview).
 
----
 
-## 🎬 Usage / Demo
-
-You can include screenshots or a GIF here to show what parts of your project look like.  
-Example:
-
-```md
-![Homepage View](screenshots/homepage.png)  
-```
-
-If there’s a working deployed demo (GitHub Pages, Vercel, Netlify), you can link it:
-
-**Demo:** [Live Preview](https://your-demo-url.com)
-
----
 
 ## 🤝 Contributing
 
