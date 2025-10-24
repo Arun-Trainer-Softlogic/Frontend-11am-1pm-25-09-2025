@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex box and flex</title>
+
+    <style>
+      .container {
+        display: flex;
+        gap: 30px;
+        background-color: aqua;
+        transition: all 0.1s ease;
+      }
+
+      .item {
+        flex-direction: column;
+        height: 200px;
+        width: 150px;
+        background-color: yellow;
+        transition: 0.1s ease-in-out;
+      }
+      .item:hover {
+        transform: scale(0.5);
+      }
+      .container:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item ar">3</div>
+      <div class="item">4</div>
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+    </div>
+  </body>
+</html>

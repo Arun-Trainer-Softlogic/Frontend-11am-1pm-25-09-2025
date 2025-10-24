@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Responsive Portfolio</title>
+    <style>
+      /* ------------------------------
+         🔹 Global Styles
+      ------------------------------ */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #222;
+        background: #f5f5f5;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      /* ------------------------------
+         🔹 Navbar
+      ------------------------------ */
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #111;
+        padding: 1rem 5%;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #00d9d9;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-size: 1rem;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #00d9d9;
+      }
+
+      /* ------------------------------
+         🔹 Hero Section
+      ------------------------------ */
+      .hero {
+        height: 90vh;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+          url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        padding: 0 2rem;
+      }
+
+      .hero h1 {
+        font-size: 5vw; /* fluid text using viewport width */
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+      }
+
+      /* ------------------------------
+         🔹 Portfolio Grid
+      ------------------------------ */
+      .portfolio {
+        padding: 5vh 5vw;
+      }
+
+      .portfolio h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: scale(1.03);
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card h3 {
+        padding: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .card p {
+        padding: 0 1rem 1rem;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      /* ------------------------------
+         🔹 Footer
+      ------------------------------ */
+      footer {
+        text-align: center;
+        background: #111;
+        color: white;
+        padding: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      /* ------------------------------
+         🔹 Media Queries (Breakpoints)
+      ------------------------------ */
+
+      /* Tablet (≤ 992px) */
+      @media (max-width: 992px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Mobile (≤ 600px) */
+      @media (max-width: 600px) {
+        nav {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+
+        .hero h1 {
+          font-size: 8vw;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 🔹 Navbar -->
+    <nav>
+      <div class="logo">MyPortfolio</div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Projects</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </nav>
+
+    <!-- 🔹 Hero Section -->
+    <section class="hero">
+      <h1>Hi, I'm Alex — Web Developer</h1>
+      <p>I build beautiful, responsive websites that adapt perfectly to any screen size.</p>
+    </section>
+
+    <!-- 🔹 Portfolio Section -->
+    <section class="portfolio">
+      <h2>My Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Project 1" />
+          <h3>Project One</h3>
+          <p>A modern landing page built with HTML, CSS, and JS.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=800&q=80" alt="Project 2" />
+          <h3>Project Two</h3>
+          <p>Responsive eCommerce layout with fluid design.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Project 3" />
+          <h3>Project Three</h3>
+          <p>Interactive dashboard built using React and APIs.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&w=800&q=80" alt="Project 4" />
+          <h3>Project Four</h3>
+          <p>Creative portfolio built with animations and fluid grid.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔹 Footer -->
+    <footer>
+      © 2025 MyPortfolio | Designed with ❤️ using HTML & CSS
+    </footer>
+  </body>
+</html>
