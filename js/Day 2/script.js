@@ -32,8 +32,10 @@
 
 // var   // 2015
 
-
-
+// conditin ? "expressioniftrue": "expressioniffalse"
+// const age = 22
+// const my_age = (age<=18) ? "my age":"not age"
+// console.log(my_age);
 
 
 

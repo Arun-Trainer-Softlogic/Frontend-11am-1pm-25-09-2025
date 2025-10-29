@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 2</title>
+  </head>
+  <body>
+    <h2>If statement</h2>
+
+    <p>enter your age to check if you are adult</p>
+    <input type="number" id="age" placeholder="enter your age now " />
+    <button onclick="checkAge()">check now</button>
+    <p id="result"></p>
+
+
+    <script>
+        function checkAge(){
+            let age = Number (document.getElementById("age").value)
+            if (age >= 18 ){
+                document.getElementById("result").innerText = "You are an adult"
+            }else{
+                document.getElementById("result").innerText = "You are a child"
+            }
+
+
+        }
+        document.getElementById("result").style.color = "red"
+    </script>
+  </body>
+</html>
