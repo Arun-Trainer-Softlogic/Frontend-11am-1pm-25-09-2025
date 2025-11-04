@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body id="center">
+    <h1 id="title">Welcome!</h1>
+
+    <button onclick="changeTitle()">Click me</button>
+
+    <h2 id="titlee">change me</h2>
+    <button onclick="changetext()">me now</button>
+
+    <img
+      src="./aaaa.png"
+      alt="sadasda"
+      id="photo"
+      width="200px"
+      height="200px"
+    />
+    <button onclick="changeimage()">Change Image</button>
+
+
+    <h1></h1>
+    <p id="text">Watch me change color and size !</p>
+    <button onclick="changeSlyle()">Change Style of this guy </button>
+
+    <script>
+      // function changeTitle(){
+      //     document.getElementById("title").innerHTML = "Dom has updated me !"
+      // }
+
+      // let ar = document.getElementById("title").innerHTML
+
+      // console.log(ar);
+
+      // function changetext(){
+      //     document.getElementById("titlee").innerHTML = "New Title here   <em>i</em>   "
+      //  }
+
+      // let bb = document.getElementById("titlee").innerText
+      // console.log(bb);
+
+      //   function changeimage(){
+      //     document.getElementById("photo").setAttribute("src","new.jpg")
+      //   }
+
+
+
+
+    function changeSlyle(){
+        let p =  document.getElementById("text")
+        let b = document.getElementById("center")
+
+        p.style.color = "red" ; 
+       p.style.fontSize = "50px" ;
+       p.style.background = "yellow"
+       p.style.textAlign = "center"
+
+
+        b.style.color = "red" ; 
+       b.style.fontSize = "50px" ;
+       b.style.background = "yellow"
+       b.style.textAlign = "center"
+
+
+    }
+      
+
+
+
+    </script>
+  </body>
+</html>

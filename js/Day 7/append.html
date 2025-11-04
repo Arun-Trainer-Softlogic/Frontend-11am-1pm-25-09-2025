@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="list">
+      <li>Newdsfafdsas</li>
+    </ul>
+
+    <script>
+      let newItem = document.createElement("li"); // <li>New Item</li>
+      let list = document.getElementById("list");
+
+      newItem.textContent = "New Item";
+
+      document.getElementById("list").appendChild(newItem);
+
+      let firstItem = list.firstElementChild;
+      list.removeChild(firstItem)
+
+
+      
+    </script>
+  </body>
+</html>

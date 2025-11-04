@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .highlight {
+        background-color: gold;
+        font-weight: bold;
+      }
+
+      p {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="para">Parakum chipssuuu packectuuu</p>
+    <button onclick="toggleHighlight()">Toggle to chnage the class</button>
+
+
+
+    <h1 id="heading">Original Heading</h1>
+    <button onclick="updateheading()">Updating Heading</button>
+
+
+
+
+
+    <script>
+      function toggleHighlight() {
+        document.getElementById("para").classList.toggle("highlight");
+      }
+
+
+
+      (
+        function  updateheading(){
+    let h = document.getElementById("heading")
+    h.innerText = "updated and styled";
+    h.style.color = "green";
+    h.style.textTransform = "uppercase"
+}
+      )()
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
