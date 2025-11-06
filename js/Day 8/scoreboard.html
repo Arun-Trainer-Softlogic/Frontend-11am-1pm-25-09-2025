@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrap">
+<header>
+<h1>Live Scoreboard</h1>
+<div class="controls">
+<input id="leftName" type="text" placeholder="Left team name" value="Team A" />
+<input id="rightName" type="text" placeholder="Right team name" value="Team B" />
+<button id="applyNames">Apply</button>
+<button id="resetAll">Reset</button>
+</div>
+</header>
+
+
+<main>
+<section class="card" id="leftCard">
+<div class="teamName" id="leftLabel">Team A</div>
+<div class="score" id="leftScore">0</div>
+<div class="btnRow">
+<button class="btn positive" data-action="left+1">+1</button>
+<button class="btn positive" data-action="left+2">+2</button>
+<button class="btn positive" data-action="left+3">+3</button>
+<button class="btn negative" data-action="left-1">-1</button>
+</div>
+<div class="small">Keyboard: Q (+1) / A (-1)</div>
+<div class="history" id="leftHistory"></div>
+</section>
+</div>
+  </body>
+</html>

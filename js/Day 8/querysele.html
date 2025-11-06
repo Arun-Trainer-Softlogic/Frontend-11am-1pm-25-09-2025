@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="title">Hollaa amigo</h1>
+
+    <p class="message">This is a paragraph</p>
+    <button id="changeTextBtn">Change text</button>
+
+    <script>
+      const titleElement = document.querySelector("#title");
+
+      const messageEle = document.querySelector(".message");
+
+
+      const button = document.querySelector("#changeTextBtn");
+
+button.addEventListener("click" , ()=> {
+    titleElement.textContent = "this class is the best class ever"
+    messageEle.style.color = "red"
+})
+
+
+
+
+
+| Method                            | Returns        | Selector Type    | Multiple? | Notes                  |
+| --------------------------------- | -------------- | ---------------- | --------- | ---------------------- |
+| `getElementById("id")`            | Element        | ID only          | ❌         | Fastest for unique IDs |
+| `getElementsByClassName("class")` | HTMLCollection | Class only       | ✅         | Live collection        |
+| `getElementsByTagName("tag")`     | HTMLCollection | Tag only         | ✅         | Live collection        |
+| `querySelector("selector")`       | Element        | Any CSS selector | ❌         | Flexible               |
+| `querySelectorAll("selector")`    | NodeList       | Any CSS selector | ✅         | Static list            |
+
+
+
+    </script>
+  </body>
+</html>
