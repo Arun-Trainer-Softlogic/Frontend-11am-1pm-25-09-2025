@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart calculator</title>
+
+    <style>
+      body {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      input {
+        padding: 12px;
+        margin: 5px;
+        width: 150px;
+      }
+
+      button {
+        padding: 12px 20px;
+        background-color: rgb(164, 80, 243);
+        color: white;
+        border: none;
+        border-radius: 10px;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-size: 21px;
+        font-weight: 500;
+      }
+
+      .error {
+        color: rgb(225, 0, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Smart Calculator</h2>
+    <input id="num1" type="number" placeholder="Enter first number" /><br />
+    <input id="num2" type="number" placeholder="Enter second number" /><br />
+    <input id="operator" placeholder="+, -, *, /" /><br />
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+      function calculate() {
+        let n1 = document.getElementById("num1").value;
+        let n2 = document.getElementById("num2").value;
+        let op = document.getElementById("operator").value;
+        let resultDiv = document.getElementById("result");
+
+        try {
+          if (n1 === "" || n2 === "" || op === "")
+            throw new Error("All fields are required!");
+
+          n1 = Number(n1);
+          n2 = Number(n2);
+
+          if (isNaN(n1) || isNaN(n2))
+            throw new Error("Please enter valid numbers!");
+
+          let result;
+          switch (op) {
+            case "+":
+              result = n1 + n2;
+              break;
+            case "-":
+              result = n1 - n2;
+              break;
+            case "*":
+              result = n1 * n2;
+              break;
+            case "/":
+              if (n2 === 0) throw new Error("Division by zero not allowed!");
+              result = n1 / n2;
+              break;
+            default:
+              throw new Error("Invalid operator! Use +, -, *, /");
+          }
+
+          resultDiv.innerHTML = `Result : ${result}`;
+         
+        } catch (error) {
+          resultDiv.innerHTML = ` Error : ${error.message}`;
+          resultDiv.classList.add("error");
+        } finally {
+          console.log("calculation Attempted ");
+        }
+      }
+    </script>
+  </body>
+</html>

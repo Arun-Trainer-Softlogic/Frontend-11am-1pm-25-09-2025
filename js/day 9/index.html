@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error handling</title>
+  </head>
+  <body>
+    <h1>Error handling</h1>
+
+    <script>
+      // console.log(userName);
+
+      // try{
+      //     // code that might throw error
+      // }catch{
+      //     // handle the error
+      // }finally{
+      //     // code tha runs no matter what
+      // }
+
+      // try{
+      //     let undelaredvariable = 34;
+      //     let num = 10
+      //     console.log(num * undelaredvariable);
+      // }catch (error){
+      //     console.log("Error caught :" , error.message);
+      // }
+
+      // try{
+      //     let a = "ar" ;
+      //     console.log("result : " , a );
+      // }catch (error){
+      //     console.log("Eroor :" , error.message);
+
+      // }finally{
+      //     console.log("exuction completed - cleaning upp .....");
+
+      // }
+
+      //   function divide(a, b) {
+      //     if (b === 0) {
+      //       throw new Error("you are a fool to divide by zero ");
+      //     }
+      //     return a / b;
+      //   }
+
+      //   try {
+      //     console.log(divide(10, 0));
+      //   } catch (error) {
+      //     console.log("error : ", error.message);
+      //   }
+
+      //     function checkAge(age){
+      //         if(age < 18 ){
+      //             throw new Error("you must be 18 or older to register ")
+      //         }
+      //         return "registration successful !";
+      //     }
+
+      // // console.log(checkAge(17));
+
+      // try{
+      //     console.log(checkAge(19));
+
+      // }catch (error){
+      //     console.log("error :" ,error.message);
+
+      // }finally{
+      //     console.log("age verification complete");
+
+      // }
+
+      try {
+        let name = "asad";
+        if (name === "") throw new Error("Name cannot be empty ");
+        console.log("Welcome", name);
+      } catch (err) {
+        console.log("Error : ", err.message);
+      } finally {
+        console.log("name checking done");
+      }
+
+
+      
+
+
+    </script>
+  </body>
+</html>
