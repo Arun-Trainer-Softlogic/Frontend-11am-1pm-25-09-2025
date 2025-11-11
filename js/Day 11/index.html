@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <style>
+         body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+
+      button {
+        background-color: #ff7f50;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 1rem;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #ff6333;
+        transform: scale(1.05);
+      }
+
+      #list {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+      }
+
+      p {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: white;
+        border: 3px solid #ffd700;
+        border-radius: 50px;
+        padding: 10px 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      p:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      img {
+        border-radius: 50%;
+        border: 2px solid #ff7f50;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+      }
+    </style>
+
+
+  </head>
+  <body>
+    <button onclick="loaddata()">get followers</button>
+
+    <div id="list"></div>
+
+    <script>
+      async function loaddata() {
+        let res = await fetch(
+          "https://api.github.com/users/arun-cloud-dev/followers"
+        );
+
+        let data = await res.json();
+
+        document.getElementById("list").innerHTML = data.map(
+          (u) =>
+            `  <p><img src="${u.avatar_url}" alt="" width="40" >   ${u.login}</p>`
+        );
+
+      }
+    </script>
+  </body>
+</html>

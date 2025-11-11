@@ -92,16 +92,16 @@
 
 
 
-// let task = new Promise((resolve, reject) => {
-//   let done = false;
-//   setTimeout(() => {
-//     done ? resolve("Task successful!") : reject("Error: Task failed!");
-//   }, 2000);
-// });
+let task = new Promise((resolve, reject) => {
+  let done = false;
+  setTimeout(() => {
+    done ? resolve("Task successful!") : reject("Error: Task failed!");
+  }, 2000);
+});
 
-// task
-//   .then(msg => console.log(msg))
-//   .catch(err => console.log(err));
+task
+  .then(msg => console.log(msg))
+  .catch(err => console.log(err));
 
 
 
