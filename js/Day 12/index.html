@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>local Storage</title>
+  </head>
+  <body>
+    <input type="text" id="name" placeholder="Enter name" />
+
+    <button onclick="saveName()">Save</button>
+
+    <button onclick="showName()">Show</button>
+
+    <p id="output"></p>
+
+
+
+    <script>
+      function saveName() {
+        let name = document.getElementById("name").value;
+
+        sessionStorage.setItem("username", name);
+        alert("saved to local Storage");
+      }
+
+
+
+      function showName(){
+        let stored = sessionStorage.getItem("username") 
+        document.getElementById('output').innerText = stored ? stored : "no name saved "
+      }
+    </script>
+  </body>
+</html>
