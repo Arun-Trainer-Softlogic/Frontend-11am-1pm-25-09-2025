@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Geolocation</h1>
+
+    <button onclick="getLocation()">get my location</button>
+
+    <p id="loc"></p>
+
+    <script>
+      function getLocation() {
+        if (!navigator.geolocation) {
+          document.getElementById("loc").innerHTML =
+            "Geoloaction not supported";
+          return;
+        }
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      }
+      function showPosition(pos) {
+        const { latitude, longitude } = pos.coords;
+        document.getElementById(
+          "loc"
+        ).innerText = `latitude : ${latitude} longitude : ${longitude}`;
+      }
+      function showError(err) {
+        document.getElementById("loc").innerText = `Error : ${err.message}`;
+      }
+    </script>
+  </body>
+</html>
