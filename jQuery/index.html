@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <button id="hideBtn">Hide Text</button>
+    <p>this ia a paragraph</p>
+
+    <button id="toggleBtn">Toggle Btn</button>
+    <div
+      id="box"
+      style="width: 100px; height: 100px; background-color: blue"
+    ></div>
+
+    <button id="chnageBtn">Change text</button>
+    <p id="message">welcome to jquery</p>
+
+
+    <button id="fadeBtn">Fade out</button>
+    <div
+      id="boxx"
+      style="width: 100px; height: 100px; background-color: blue"
+    ></div>
+   
+
+    <script>
+      $("#hideBtn").click(function () {
+        $("p").hide();
+      });
+
+      $("#toggleBtn").click(function () {
+        $("#box").toggle(500);
+      });
+
+      $("#chnageBtn").click(function (){
+        $('#message').text("you have changed the text").css("color","red")
+      });
+
+
+      $("#fadeBtn").click(function() {
+        $("#boxx").fadeOut(1000)
+      })
+    </script>
+
+    <!-- $(selector).action();
+     -->
+  </body>
+</html>

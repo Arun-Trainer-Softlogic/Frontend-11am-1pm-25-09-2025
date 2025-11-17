@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo Site — jQuery Interactivity</title>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-o88Awf4FfXb3g5/2mQvC+3b0bq2k6tT9fXv6jZ8aQ14=" crossorigin="anonymous"></script>
+
+  <style>
+    /* Simple reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height: 1.5; color: #222; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Layout */
+    header { background: linear-gradient(135deg,#0ea5a4,#06b6d4); color: white; position: sticky; top:0; z-index:1000; }
+    .container { max-width:1100px; margin:0 auto; padding: 0 16px; }
+
+    /* Navbar */
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: 12px 0; }
+    .brand { font-weight:700; font-size:1.125rem; letter-spacing:0.2px; }
+    .nav-links { display:flex; gap:14px; align-items:center; }
+    .nav-links a { padding:8px 12px; border-radius:6px; color: white; }
+    .nav-links a:hover { background: rgba(255,255,255,0.12); }
+    .hamburger { display:none; cursor:pointer; padding:8px; border-radius:6px; }
+    .hamburger div { width:24px; height:2px; background:white; margin:5px 0; }
+
+    /* Hero */
+    .hero { padding:48px 0; display:grid; grid-template-columns: 1fr 420px; gap:32px; align-items:center; }
+    .hero h1 { font-size:2rem; margin-bottom:12px; }
+    .hero p { color: #e6fbfb; margin-bottom:20px; }
+    .cta { display:inline-block; padding:10px 16px; background: #073642; color: white; border-radius:8px; }
+
+    /* Cards / Features */
+    .features { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:32px 0; }
+    .card { background:white; border-radius:8px; padding:18px; box-shadow:0 6px 18px rgba(3,7,18,0.06); }
+    .card h3 { margin-bottom:8px; font-size:1.05rem; }
+
+    /* Gallery + Filters */
+    .gallery-controls { display:flex; gap:8px; margin:12px 0 8px; flex-wrap:wrap; }
+    .filter-btn { padding:8px 12px; border-radius:6px; border:1px solid #ddd; cursor:pointer; background:white; }
+    .filter-btn.active { border-color:#06b6d4; background:rgba(6,182,212,0.08); }
+    .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-bottom:24px; }
+    .photo { position:relative; cursor:pointer; overflow:hidden; border-radius:8px; }
+    .photo img { width:100%; height:160px; object-fit:cover; display:block; transition: transform .35s; }
+    .photo:hover img { transform: scale(1.06); }
+    .photo .meta { position:absolute; left:8px; bottom:8px; background:rgba(0,0,0,0.45); color:white; padding:6px 8px; border-radius:6px; font-size:0.85rem; }
+
+    /* Modal (lightbox) */
+    .modal { display:none; position:fixed; inset:0; background: rgba(0,0,0,0.7); align-items:center; justify-content:center; z-index:2000; padding:18px; }
+    .modal .dialog { max-width:900px; width:100%; background:white; border-radius:10px; overflow:hidden; }
+    .modal .content { display:flex; gap:12px; }
+    .modal img { max-width:60%; height:auto; display:block; }
+    .modal .info { padding:18px; flex:1; }
+    .close { position:absolute; right:18px; top:18px; cursor:pointer; background:white; padding:6px; border-radius:6px; }
+
+    /* FAQ */
+    .faq { margin:24px 0; }
+    .faq-item { border-bottom:1px solid #eee; padding:12px 0; }
+    .faq-question { cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+    .faq-answer { display:none; padding-top:10px; color:#444; }
+
+    /* Contact Form */
+    .contact { background:#f7feff; padding:18px; border-radius:10px; }
+    .form-row { display:flex; gap:12px; margin-bottom:10px; }
+    .form-row .field { flex:1; }
+    input[type="text"], input[type="email"], textarea { width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; font-size:0.95rem; }
+    textarea { min-height:110px; resize:vertical; }
+
+    /* Toast */
+    .toast { position:fixed; right:18px; bottom:18px; background:#062f4f; color:white; padding:12px 16px; border-radius:8px; display:none; z-index:3000; }
+
+    /* Responsive */
+    @media (max-width:880px) {
+      .hero { grid-template-columns: 1fr; text-align:left; }
+      .hamburger { display:block; }
+      .nav-links { display:none; position:absolute; right:16px; top:56px; background: rgba(255,255,255,0.95); padding:12px; border-radius:8px; flex-direction:column; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+      .nav-links a { color:#0b5560; }
+      .modal img { display:none; } /* simplify on small screens */
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header / Navbar -->
+<header>
+  <div class="container nav">
+    <div class="brand">jQueryDemo</div>
+
+    <nav>
+      <div class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <div></div><div></div><div></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="container" style="padding:20px 16px;">
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div>
+      <h1>Build interactive pages quickly with jQuery</h1>
+      <p>Learn how to add interactivity, filter content, show modals, and validate forms using concise jQuery code — ideal for prototyping and teaching DOM concepts.</p>
+      <a class="cta" href="#gallery">View Gallery</a>
+      <div style="margin-top:18px;color:#e8fdfd;font-size:0.95rem;">Tip: Open DevTools and watch the console for debug messages while we use jQuery.</div>
+    </div>
+    <div>
+      <div style="background:white;border-radius:10px;padding:14px;box-shadow:0 8px 30px rgba(3,7,18,0.06);">
+        <h3 style="margin-bottom:6px;">Live Demo Controls</h3>
+        <p style="font-size:0.95rem;color:#333;">Use the gallery filters and contact form below to see jQuery in action.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" aria-labelledby="featuresHeading">
+    <h2 id="featuresHeading" style="margin-top:12px; margin-bottom:10px;">Features</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Filterable Gallery</h3>
+        <p>Filter items by category with animated show/hide transitions.</p>
+      </div>
+      <div class="card">
+        <h3>Lightbox Modal</h3>
+        <p>Click images to view details inside a modal. Accessible close button included.</p>
+      </div>
+      <div class="card">
+        <h3>Accordion FAQ</h3>
+        <p>Expandable/collapsible questions using slide animations.</p>
+      </div>
+      <div class="card">
+        <h3>Contact Form</h3>
+        <p>Client-side validation and simulated AJAX submit with friendly toasts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery with filters -->
+  <section id="gallery" style="margin-top:12px;">
+    <h2>Gallery</h2>
+    <div class="gallery-controls" role="toolbar" aria-label="Filter gallery">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="nature">Nature</button>
+      <button class="filter-btn" data-filter="city">City</button>
+      <button class="filter-btn" data-filter="space">Space</button>
+    </div>
+
+    <div class="gallery" id="galleryGrid">
+      <!-- Items include data-category for filtering and data-title/data-desc for modal -->
+      <div class="photo" data-category="nature" data-title="Forest" data-desc="Misty forest at dawn.">
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a5e4f1d9d2d3fd2a6a7a0a8a6e9f8b3" alt="forest">
+        <div class="meta">Nature</div>
+      </div>
+      <div class="photo" data-category="city" data-title="City Lights" data-desc="Skylines at night.">
+        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=b6f2f1b6bb3a6b1a8d3c7f4c7b2a8c5a" alt="city">
+        <div class="meta">City</div>
+      </div>
+      <div class="photo" data-category="space" data-title="Galaxy" data-desc="A distant spiral galaxy.">
+        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=1c3d8b6f7b9a0a2c5b6e9f6b3d5c2a1a" alt="space">
+        <div class="meta">Space</div>
+      </div>
+      <div class="photo" data-category="nature" data-title="Lake" data-desc="Tranquil lake scene.">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=6d4f1a8b2c9d7e6f5a4b3c2d1e0f9a8b" alt="lake">
+        <div class="meta">Nature</div>
+      </div>
+      <div class="photo" data-category="city" data-title="Bridge" data-desc="Bridge crossing over water.">
+        <img src="https://images.unsplash.com/photo-1505765052550-24a6be7d6b7e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=abc123def4567890abc123def4567890" alt="bridge">
+        <div class="meta">City</div>
+      </div>
+      <div class="photo" data-category="space" data-title="Moon" data-desc="Close shot of the moon.">
+        <img src="https://images.unsplash.com/photo-1470290378698-2f78a1863fb8?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=bbbb1111222233334444555566667777" alt="moon">
+        <div class="meta">Space</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal (hidden by default) -->
+  <div class="modal" id="lightbox" role="dialog" aria-hidden="true" aria-labelledby="lightboxTitle">
+    <div class="dialog">
+      <button class="close" id="modalClose">✕</button>
+      <div class="content">
+        <img id="modalImg" src="" alt="">
+        <div class="info">
+          <h3 id="lightboxTitle">Title</h3>
+          <p id="lightboxDesc">Description goes here.</p>
+          <div style="margin-top:12px;">
+            <button id="prevBtn" class="filter-btn">Previous</button>
+            <button id="nextBtn" class="filter-btn">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Accordion -->
+  <section id="faq" style="margin-top:16px;">
+    <h2>FAQ</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-question">What is jQuery? <span class="arrow">▾</span></div>
+        <div class="faq-answer">jQuery is a lightweight JavaScript library that simplifies DOM operations, event handling and AJAX.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Why use jQuery in 2025? <span class="arrow">▾</span></div>
+        <div class="faq-answer">It remains useful for teaching, rapid prototyping and working with legacy projects; but modern apps often use frameworks.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is jQuery accessible? <span class="arrow">▾</span></div>
+        <div class="faq-answer">Yes — but you must still follow accessibility practices like focus management and ARIA when creating dynamic content.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="margin-top:18px;">
+    <h2>Contact Us</h2>
+    <div class="contact">
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message"></textarea>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button type="submit" class="filter-btn">Send Message</button>
+          <div id="formStatus" aria-live="polite" style="font-size:0.95rem;color:#0b5560;"></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- jQuery Interactivity ---------- */
+$(function() {
+  // NAV: hamburger toggle for small screens
+  $('#hamburger').on('click', function() {
+    $('#navLinks').slideToggle(200);
+  });
+
+  // Smooth scrolling for nav links
+  $('a[href^="#"]').on('click', function(e){
+    var target = $(this).attr('href');
+    if (target.length > 1) {
+      e.preventDefault();
+      var $t = $(target);
+      if ($t.length) {
+        $('html,body').animate({ scrollTop: $t.offset().top - 14 }, 500);
+        // If mobile nav is open, close it
+        if ($(window).width() < 880) { $('#navLinks').slideUp(150); }
+      }
+    }
+  });
+
+  // GALLERY: filter buttons
+  $('.filter-btn').on('click', function(){
+    var filter = $(this).data('filter') || $(this).attr('data-filter');
+    if (!filter) return;
+
+    // set active class on filter buttons (only the ones inside controls)
+    $(this).siblings().removeClass('active');
+    $(this).addClass('active');
+
+    // show/hide pictures
+    if (filter === 'all') {
+      $('#galleryGrid .photo').fadeIn(250);
+    } else {
+      $('#galleryGrid .photo').each(function(){
+        var cat = $(this).data('category');
+        if (cat === filter) { $(this).fadeIn(250); }
+        else { $(this).fadeOut(200); }
+      });
+    }
+  });
+
+  // LIGHTBOX: open modal on image click
+  function openModal($photo) {
+    var src = $photo.find('img').attr('src');
+    var title = $photo.attr('data-title') || '';
+    var desc = $photo.attr('data-desc') || '';
+    $('#modalImg').attr('src', src);
+    $('#lightboxTitle').text(title);
+    $('#lightboxDesc').text(desc);
+    // remember which index is open
+    $('#lightbox').data('currentIndex', $photo.index());
+    $('#lightbox').fadeIn(180).attr('aria-hidden','false');
+  }
+
+  $('#galleryGrid').on('click', '.photo', function(){
+    openModal($(this));
+  });
+
+  // close modal handlers
+  $('#modalClose').on('click', function(){ $('#lightbox').fadeOut(160).attr('aria-hidden','true'); });
+  $('#lightbox').on('click', function(e){
+    if (e.target === this) { $(this).fadeOut(160).attr('aria-hidden','true'); }
+  });
+  $(document).on('keyup', function(e){
+    if (e.key === "Escape") $('#lightbox').fadeOut(160).attr('aria-hidden','true');
+  });
+
+  // prev / next within gallery
+  $('#prevBtn').on('click', function(){
+    var idx = $('#lightbox').data('currentIndex') || 0;
+    idx = Math.max(0, idx - 1);
+    var $next = $('#galleryGrid .photo').eq(idx);
+    openModal($next);
+  });
+  $('#nextBtn').on('click', function(){
+    var idx = $('#lightbox').data('currentIndex') || 0;
+    idx = Math.min($('#galleryGrid .photo').length - 1, idx + 1);
+    var $next = $('#galleryGrid .photo').eq(idx);
+    openModal($next);
+  });
+
+  // FAQ accordion
+  $('.faq-question').on('click', function(){
+    var $item = $(this).closest('.faq-item');
+    var $answer = $item.find('.faq-answer');
+    // close others
+    $('.faq-answer').not($answer).slideUp(180);
+    // toggle this one
+    $answer.slideToggle(180);
+  });
+
+  // CONTACT: simple client-side validation and simulated AJAX submit
+  function showToast(message, timeout) {
+    timeout = timeout || 3000;
+    $('#toast').stop(true,true).text(message).fadeIn(180).delay(timeout).fadeOut(220);
+  }
+
+  $('#contactForm').on('submit', function(e){
+    e.preventDefault();
+    var name = $.trim($('#name').val());
+    var email = $.trim($('#email').val());
+    var message = $.trim($('#message').val());
+
+    // Basic validation
+    if (!name) { $('#formStatus').text('Please enter your name.'); $('#name').focus(); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { $('#formStatus').text('Please enter a valid email.'); $('#email').focus(); return; }
+    if (!message || message.length < 8) { $('#formStatus').text('Message must be at least 8 characters.'); $('#message').focus(); return; }
+
+    $('#formStatus').text('Sending...');
+    // Simulated AJAX call using setTimeout to mimic network latency
+    setTimeout(function(){
+      // success: clear form and show toast
+      $('#contactForm')[0].reset();
+      $('#formStatus').text('');
+      showToast('Thanks! Your message has been sent.');
+      console.log('Simulated form submit:', { name: name, email: email, message: message });
+    }, 900);
+  });
+
+  // Small demo: Console log number of photos on load and when filters apply
+  console.log('Gallery photos:', $('#galleryGrid .photo').length);
+
+  // Accessibility / keyboard hint for demo: allow left/right when modal open
+  $(document).on('keydown', function(e){
+    if ($('#lightbox').is(':visible')) {
+      if (e.which === 37) { $('#prevBtn').click(); } // left
+      if (e.which === 39) { $('#nextBtn').click(); } // right
+    }
+  });
+
+  // Optional: Resize behavior - remove inline nav display on large screens
+  $(window).on('resize', function(){
+    if ($(window).width() > 880) { $('#navLinks').show(); }
+    else { $('#navLinks').hide(); }
+  }).trigger('resize');
+
+});
+</script>
+
+</body>
+</html>
