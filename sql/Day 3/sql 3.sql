@@ -122,12 +122,67 @@
 -- min(salary) as lowest_salary,
 -- max(salary)as highest_salary
 -- from employees;
-select dep_id , avg(salary) as total_dept_slary 
+-- select dep_id , avg(salary) as total_dept_slary 
+-- from employees 
+-- group by dep_id
+
+
+
+-- select dep_id , count(*) as emp_count
+-- from employees 
+-- group by dep_id
+-- having  count(*) > 5
+
+-- select dep_id , count(salary) as total_sal
+-- from employees group by dep_id
+-- having
+-- sum(salary ) > 90000.00;
+
+
+
+
+-- select dep_id,
+-- count(*) As empl_count -- counts employees in each deapt 
+-- from employees 
+-- group by dep_id  -- groups row by depttt
+-- having count(*) > 5
+
+
+-- select dep_id, avg(salary) as avg_salary -- calculate avg salary per department 
+-- from employees 
+-- group by dep_id
+-- having avg(salary) > 70000;
+
+
+-- select year (hire_date)As hire_year,   
+-- count(*) as hires 
+-- from employees 
+-- group by hire_year
+-- having count(*) > 1 ;
+
+
+-- select 
+-- case 
+-- when salary < 60000 then "low salary"
+-- when salary between 60000 and 80000 then "mid salary"
+-- else "high salary"
+-- end as salary_range ,
+-- count(*) as employees 
+-- from employees 
+-- group by salary_range 
+-- having count(*) >= 15
+-- case groups employees into salry bands 
+-- group by groups by band 
+-- having filters out small groups 
+-- good example for data analytics 
+
+
+select 
+dep_id,
+sum(salary) as total_salary_cost
 from employees 
 group by dep_id
-
-
-
+having sum(salary) > 300000 ;
 
 
 
