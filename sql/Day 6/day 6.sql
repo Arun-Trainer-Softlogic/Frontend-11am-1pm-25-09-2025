@@ -57,17 +57,17 @@
 
 
 
-SELECT
-    e1.emp_id AS emp_id_1,
-    CONCAT(e1.first_name, ' ', e1.last_name) AS employee_1,
-    YEAR(e1.hire_date) AS hire_year,
-    e2.emp_id AS emp_id_2,
-    CONCAT(e2.first_name, ' ', e2.last_name) AS employee_2
-FROM employees e1
-  join employees e2
-    ON YEAR(e1.hire_date) = YEAR(e2.hire_date) 
- AND e1.emp_id <> e2.emp_id                    
-ORDER BY hire_year, employee_1;
+-- SELECT
+--     e1.emp_id AS emp_id_1,
+--     CONCAT(e1.first_name, ' ', e1.last_name) AS employee_1,
+--     YEAR(e1.hire_date) AS hire_year,
+--     e2.emp_id AS emp_id_2,
+--     CONCAT(e2.first_name, ' ', e2.last_name) AS employee_2
+-- FROM employees e1
+--   join employees e2
+--     ON YEAR(e1.hire_date) = YEAR(e2.hire_date) 
+--  AND e1.emp_id <> e2.emp_id                    
+-- ORDER BY hire_year, employee_1;
 
 
 
