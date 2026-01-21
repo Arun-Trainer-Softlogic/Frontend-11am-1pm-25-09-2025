@@ -261,6 +261,17 @@
 --                            dept_id (FK)                  emp_id (FK)
 
 
+ 
+ 
+
+-- use company_ds;
+
+
+
+
+
+
+
 
 
 
